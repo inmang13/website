@@ -5,8 +5,8 @@ export default function HeroExample() {
     <Hero
       name="David Mitchell"
       title="Water Resource Engineer"
-      tagline="Designing sustainable water infrastructure solutions with over 15 years of experience in hydraulic modeling, stormwater management, and watershed analysis."
-      onContactClick={() => console.log("Contact clicked")}
+      tagline="Graduate student pursuing advanced research in hydraulic modeling, stormwater management, and sustainable watershed solutions."
+      initials="DM"
     />
   );
 }

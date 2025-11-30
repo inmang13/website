@@ -117,17 +117,17 @@ export default function Home() {
   ];
 
   const bio = [
-    "I am a licensed Professional Engineer specializing in water resources, with expertise spanning hydraulic modeling, stormwater infrastructure design, and sustainable watershed management.",
-    "Throughout my career, I have led projects ranging from urban flood mitigation systems to regional water supply planning, working with municipalities, private developers, and federal agencies.",
-    "My approach combines rigorous technical analysis with practical, cost-effective solutions that balance environmental stewardship with community needs."
+    "I am a graduate student specializing in water resources engineering, with a focus on hydraulic modeling, stormwater infrastructure design, and sustainable watershed management.",
+    "My research explores innovative approaches to urban flood mitigation and nature-based solutions for water quality improvement.",
+    "I combine rigorous computational analysis with practical design thinking to develop solutions that balance environmental stewardship with community needs."
   ];
 
   const credentials = [
-    "P.E. Licensed",
-    "CFM Certified",
-    "LEED AP",
-    "M.S. Civil Engineering",
-    "B.S. Environmental Engineering"
+    "M.S. Candidate - Civil Engineering",
+    "B.S. Environmental Engineering",
+    "Hydraulic Modeling",
+    "Stormwater Design",
+    "GIS Analysis"
   ];
 
   return (
@@ -138,11 +138,12 @@ export default function Home() {
         <Hero
           name="David Mitchell"
           title="Water Resource Engineer"
-          tagline="Designing sustainable water infrastructure solutions with over 15 years of experience in hydraulic modeling, stormwater management, and watershed analysis."
+          tagline="Graduate student pursuing advanced research in hydraulic modeling, stormwater management, and sustainable watershed solutions."
+          initials="DM"
         />
         
         <About
-          yearsExperience={15}
+          currentStatus="M.S. Candidate in Civil Engineering"
           bio={bio}
           credentials={credentials}
         />
