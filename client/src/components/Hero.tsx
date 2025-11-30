@@ -1,15 +1,14 @@
+import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 interface HeroProps {
   name: string;
   title: string;
   tagline: string;
-  headshotUrl?: string;
-  initials?: string;
+  onContactClick?: () => void;
 }
 
-export default function Hero({ name, title, tagline, headshotUrl, initials = "DM" }: HeroProps) {
+export default function Hero({ name, title, tagline, onContactClick }: HeroProps) {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -23,18 +22,11 @@ export default function Hero({ name, title, tagline, headshotUrl, initials = "DM
       className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20"
       data-testid="section-hero"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-cyan-500/5" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-transparent opacity-90" />
       
       <div className="relative z-10 max-w-4xl mx-auto text-center">
-        <Avatar className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-8 ring-4 ring-primary/20 ring-offset-4 ring-offset-background">
-          <AvatarImage src={headshotUrl} alt={name} data-testid="img-headshot" />
-          <AvatarFallback className="text-3xl md:text-4xl font-semibold bg-primary/20 text-primary">
-            {initials}
-          </AvatarFallback>
-        </Avatar>
-        
         <p 
-          className="text-sm md:text-base uppercase tracking-[0.2em] text-primary mb-6"
+          className="text-sm md:text-base uppercase tracking-[0.2em] text-muted-foreground mb-6"
           data-testid="text-title"
         >
           {title}
@@ -48,16 +40,28 @@ export default function Hero({ name, title, tagline, headshotUrl, initials = "DM
         </h1>
         
         <p 
-          className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto"
+          className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-12"
           data-testid="text-tagline"
         >
           {tagline}
         </p>
+        
+        <Button
+          size="lg"
+          className="rounded-full px-8"
+          onClick={() => {
+            onContactClick?.();
+            scrollToSection("contact");
+          }}
+          data-testid="button-contact-cta"
+        >
+          Get in Touch
+        </Button>
       </div>
       
       <button
         onClick={() => scrollToSection("about")}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-primary hover:text-primary/80 transition-colors"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-foreground transition-colors"
         aria-label="Scroll to about section"
         data-testid="button-scroll-down"
       >

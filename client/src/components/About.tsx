@@ -3,10 +3,10 @@ import { Badge } from "@/components/ui/badge";
 interface AboutProps {
   bio: string[];
   credentials: string[];
-  currentStatus?: string;
+  yearsExperience: number;
 }
 
-export default function About({ bio, credentials, currentStatus }: AboutProps) {
+export default function About({ bio, credentials, yearsExperience }: AboutProps) {
   return (
     <section 
       id="about" 
@@ -21,18 +21,17 @@ export default function About({ bio, credentials, currentStatus }: AboutProps) {
           About
         </h2>
         
-        {currentStatus && (
-          <div className="flex items-center justify-center mb-12">
-            <div className="px-6 py-3 rounded-full bg-primary/10 border border-primary/20">
-              <span 
-                className="text-primary font-medium"
-                data-testid="text-current-status"
-              >
-                {currentStatus}
-              </span>
-            </div>
+        <div className="flex items-center justify-center mb-12">
+          <div className="text-center">
+            <span 
+              className="text-5xl md:text-6xl font-bold text-primary"
+              data-testid="text-years-experience"
+            >
+              {yearsExperience}+
+            </span>
+            <p className="text-muted-foreground mt-2">Years of Experience</p>
           </div>
-        )}
+        </div>
         
         <div className="space-y-6 mb-12">
           {bio.map((paragraph, index) => (
@@ -48,14 +47,13 @@ export default function About({ bio, credentials, currentStatus }: AboutProps) {
         
         <div>
           <h3 className="text-xl font-medium text-foreground mb-4">
-            Education & Focus Areas
+            Credentials & Certifications
           </h3>
           <div className="flex flex-wrap gap-2">
             {credentials.map((credential, index) => (
               <Badge 
                 key={index} 
                 variant="secondary"
-                className="bg-cyan-500/10 text-cyan-400 border-cyan-500/20"
                 data-testid={`badge-credential-${index}`}
               >
                 {credential}

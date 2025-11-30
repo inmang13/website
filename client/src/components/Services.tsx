@@ -60,8 +60,8 @@ export default function Services({ services }: ServicesProps) {
                 data-testid={`card-service-${index}`}
               >
                 <CardContent className="p-6 md:p-8">
-                  <div className="w-12 h-12 rounded-md bg-gradient-to-br from-primary/20 to-cyan-500/20 flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6 text-cyan-400" />
+                  <div className="w-12 h-12 rounded-md bg-primary/10 flex items-center justify-center mb-4">
+                    <Icon className="w-6 h-6 text-primary" />
                   </div>
                   <h3 
                     className="text-xl font-medium text-foreground mb-2"
