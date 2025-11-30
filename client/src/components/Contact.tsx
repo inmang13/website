@@ -11,36 +11,38 @@ export default function Contact({ email, linkedin, location }: ContactProps) {
   return (
     <section 
       id="contact" 
-      className="py-20 md:py-32 px-6"
+      className="py-20 md:py-32 px-6 relative"
       data-testid="section-contact"
     >
-      <div className="max-w-3xl mx-auto text-center">
+      <div className="absolute inset-0 bg-gradient-to-t from-primary/5 via-transparent to-transparent" />
+      
+      <div className="max-w-3xl mx-auto text-center relative z-10">
         <h2 
           className="text-3xl md:text-4xl font-semibold text-foreground mb-4"
           data-testid="text-contact-heading"
         >
-          Let's Work Together
+          Let's Connect
         </h2>
         <p className="text-muted-foreground mb-12 max-w-xl mx-auto">
-          Available for consulting, project collaboration, and technical advisory services
+          Open to research collaborations, internship opportunities, and industry connections
         </p>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
           <Button
             size="lg"
-            className="rounded-full px-8 gap-2"
+            className="rounded-full px-8 gap-2 bg-gradient-to-r from-primary to-cyan-600"
             onClick={() => window.location.href = `mailto:${email}`}
             data-testid="button-email"
           >
             <Mail className="w-4 h-4" />
-            Send Email
+            Email Me
           </Button>
           
           {linkedin && (
             <Button
               variant="outline"
               size="lg"
-              className="rounded-full px-8 gap-2"
+              className="rounded-full px-8 gap-2 border-primary/30 text-primary hover:bg-primary/10"
               onClick={() => window.open(linkedin, "_blank")}
               data-testid="button-linkedin"
             >
@@ -51,7 +53,7 @@ export default function Contact({ email, linkedin, location }: ContactProps) {
         </div>
         
         <div className="flex items-center justify-center gap-2 text-muted-foreground">
-          <MapPin className="w-4 h-4" />
+          <MapPin className="w-4 h-4 text-cyan-400" />
           <span data-testid="text-location">{location}</span>
         </div>
       </div>

@@ -41,7 +41,7 @@ export default function Projects({ projects }: ProjectsProps) {
             >
               <CardContent className="p-6 md:p-8">
                 <div className="flex flex-wrap items-start justify-between gap-2 mb-4">
-                  <Badge variant="outline" className="text-xs">
+                  <Badge variant="outline" className="text-xs border-primary/30 text-primary">
                     {project.category}
                   </Badge>
                   <div className="flex items-center gap-1 text-muted-foreground text-sm">
@@ -75,7 +75,7 @@ export default function Projects({ projects }: ProjectsProps) {
                         className="text-sm text-foreground flex items-start gap-2"
                         data-testid={`text-project-outcome-${index}-${oIndex}`}
                       >
-                        <span className="text-primary mt-1.5 text-xs">•</span>
+                        <span className="text-cyan-400 mt-1.5 text-xs">•</span>
                         {outcome}
                       </li>
                     ))}
