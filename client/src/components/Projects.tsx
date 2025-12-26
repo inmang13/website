@@ -7,7 +7,6 @@ interface Project {
   location: string;
   description: string;
   outcomes: string[];
-  category: string;
 }
 
 interface ProjectsProps {
@@ -41,9 +40,6 @@ export default function Projects({ projects }: ProjectsProps) {
             >
               <CardContent className="p-6 md:p-8">
                 <div className="flex flex-wrap items-start justify-between gap-2 mb-4">
-                  <Badge variant="outline" className="text-xs border-primary/30 text-primary">
-                    {project.category}
-                  </Badge>
                   <div className="flex items-center gap-1 text-muted-foreground text-sm">
                     <MapPin className="w-3 h-3" />
                     <span data-testid={`text-project-location-${index}`}>{project.location}</span>

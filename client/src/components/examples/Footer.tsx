@@ -1,5 +1,5 @@
 import Footer from "../Footer";
 
 export default function FooterExample() {
-  return <Footer name="David Mitchell" />;
+  return <Footer name="Grace Inman" />;
 }

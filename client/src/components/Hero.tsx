@@ -9,7 +9,7 @@ interface HeroProps {
   initials?: string;
 }
 
-export default function Hero({ name, title, tagline, headshotUrl, initials = "DM" }: HeroProps) {
+export default function Hero({ name, title, tagline, headshotUrl, initials = "GI" }: HeroProps) {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -20,10 +20,12 @@ export default function Hero({ name, title, tagline, headshotUrl, initials = "DM
   return (
     <section 
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20"
+      className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20 overflow-hidden"
       data-testid="section-hero"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-cyan-500/5" />
+      <div className="absolute inset-0 bg-transparent" />
+      
+
       
       <div className="relative z-10 max-w-4xl mx-auto text-center">
         <Avatar className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-8 ring-4 ring-primary/20 ring-offset-4 ring-offset-background">
