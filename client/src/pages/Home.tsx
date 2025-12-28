@@ -58,7 +58,7 @@ export default function Home() {
 
 
   const bio = [
-    "I’m an M.S. student in Civil and Environmental Engineering at Duke. My study tract is Systems, Risk, and Decision and my focu area is water. My foundation is in water resources engineering, and I’m currently working on strengthening my computational and programming skills."
+    "I’m an M.S. student in Civil and Environmental Engineering at Duke University, specializing in Systems, Risk, and Decision. My work is grounded in water resources engineering, and I’m currently expanding my expertise in computational methods and programming to better understand and solve complex water challenges."
   ];
 
   const credentials = [
