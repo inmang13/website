@@ -7,9 +7,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 
-// ⬇️ import river components
-import BackgroundRiver from "@/components/BackgroundRiver";
-import RiverScrollEffect from "./components/RiverScrollEffect";
 
 function Router() {
   return (
@@ -24,13 +21,14 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <Toaster />
+        <div className="relative min-h-screen"> 
+          <Toaster />
 
-        {/* 🌊 GLOBAL BACKGROUND RIVER HERE */}
-        <BackgroundRiver />
-        <RiverScrollEffect />
-
-        <Router />
+          {/* This sits on top of the background */}
+          <main className="relative z-10">
+            <Router />
+          </main>
+        </div>
       </TooltipProvider>
     </QueryClientProvider>
   );

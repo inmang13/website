@@ -18,7 +18,7 @@ export default function Home() {
       company: "Duke University",
       location: "Durham, NC",
       period: "2025 - Present",
-      description: "Focusing on systems, risk, and decision-making with applications to water resource systems and hydroinformatics.",
+      description: "Pursuing a study track in Systems, Risk, and Decision with focus in water.",
       skills: ["Python",
       "Pandas / NumPy",
       "Xarray/Rasterio",
@@ -31,7 +31,7 @@ export default function Home() {
       company: "David Lab, Duke University",
       location: "Durham, NC",
       period: "2025 - Present",
-      description: "Managing field crew for monthly sewer sampling program across 25 census tracts in Durham, NC.",
+      description: "Managing field crew for monthly sewer sampling program across 25 census tracts in Durham, NC. Resposible for training new technicians, coordinating logistics, and ensuring data quality.",
       skills: ["Basecamp", "Field Team Leadership"]
     },
     {
@@ -39,7 +39,7 @@ export default function Home() {
       company: "CDM Smith",
       location: "Boston, MA",
       period: "2021-2025",
-      description: "Worked on hydrologic and hydraulic modeling, water quality analysis, field programs, and infrastructure planning.",
+      description: "Worked on hydrologic and hydraulic modeling, water quality analysis, precipitation analysis, field programs, and drinking water planning.",
       skills:[
       "Python","R","MATLAB","SQL","ArcGIS Online","Field Maps","EPA SWMM","PCSWMM","EPA SSOAP","EFDC","RShiny","renv","SSOAP",
     ]
@@ -58,7 +58,7 @@ export default function Home() {
 
 
   const bio = [
-    "I’m an M.S. student in Civil and Environmental Engineering at Duke, focusing on Systems, Risk, and Decision. My foundation is in water resources engineering, and I’m currently working on strengthening my computational and programming skills. I love learning new tools and finding ways to bridge the gap between industry and academia."
+    "I’m an M.S. student in Civil and Environmental Engineering at Duke. My study tract is Systems, Risk, and Decision and my focu area is water. My foundation is in water resources engineering, and I’m currently working on strengthening my computational and programming skills."
   ];
 
   const credentials = [
@@ -74,6 +74,7 @@ export default function Home() {
         <Hero
           name="Grace Inman"
           title="Water Resource Engineer"
+          headshotUrl="./headshot.jpg"
           tagline="Graduate student developing data-driven solutions in water resources engineering."
           initials="GI"
         />

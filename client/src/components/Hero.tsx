@@ -28,8 +28,8 @@ export default function Hero({ name, title, tagline, headshotUrl, initials = "GI
 
       
       <div className="relative z-10 max-w-4xl mx-auto text-center">
-        <Avatar className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-8 ring-4 ring-primary/20 ring-offset-4 ring-offset-background">
-          <AvatarImage src={headshotUrl} alt={name} data-testid="img-headshot" />
+          <Avatar className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-8 ring-4 ring-primary/20 ring-offset-4 ring-offset-background">
+          <AvatarImage src={headshotUrl} alt={name} className="w-full h-full object-cover" />
           <AvatarFallback className="text-3xl md:text-4xl font-semibold bg-primary/20 text-primary">
             {initials}
           </AvatarFallback>
