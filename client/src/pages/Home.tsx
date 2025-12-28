@@ -88,7 +88,8 @@ export default function Home() {
 
         <Contact
           email="grace.inman@duke.edu"
-          linkedin="https://www.linkedin.com/in/grace-inman-990a881a6/"        />      
+          linkedin="https://www.linkedin.com/in/grace-inman-990a881a6/" 
+          github="https://github.com/inmang13" />      
         
       </main>
       

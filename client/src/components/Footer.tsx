@@ -7,7 +7,7 @@ export default function Footer({ name, currentYear = new Date().getFullYear() }:
   return (
     <footer 
       className="py-8 px-6 border-t border-border"
-      data-testid="section-footer"
+      data-testid="secation-footer"
     >
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col items-center gap-3 text-sm text-muted-foreground text-center">
