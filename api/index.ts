@@ -1,3 +1,5 @@
-// This file acts as the gateway for Vercel
-import app from "../server/index"; // Adjust path to your actual server file
-export default app;
+// This directs Vercel to your compiled server
+const app = require('../dist/index.cjs');
+module.exports = (req, res) => {
+  return app(req, res);
+};
