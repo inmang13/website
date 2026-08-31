@@ -21,7 +21,7 @@ export default function Contact({ email, linkedin, github, resumeUrl }: ContactP
         </h2>
 
         <p className="text-muted-foreground mb-12 max-w-xl mx-auto">
-          Open to internship opportunities for summer 2026
+          Open to full-time employment after graduating May 2027
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
