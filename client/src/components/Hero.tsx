@@ -1,4 +1,5 @@
 import { ChevronDown, Download } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 interface HeroProps {
@@ -58,15 +59,16 @@ export default function Hero({ name, title, tagline, headshotUrl, initials = "GI
         </p>
 
         {resumeUrl && (
-          <a
-            href={resumeUrl}
-            download
-            className="inline-flex items-center gap-2 mt-8 px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-sm font-medium hover:shadow-lg hover:shadow-cyan-500/50 transition-shadow"
-            data-testid="link-download-resume"
+          <Button
+            asChild
+            size="lg"
+            className="mt-8 rounded-full gap-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:shadow-lg hover:shadow-cyan-500/50"
           >
-            <Download className="w-4 h-4" />
-            Download Resume
-          </a>
+            <a href={resumeUrl} download data-testid="link-download-resume">
+              <Download className="w-4 h-4" />
+              Download Resume
+            </a>
+          </Button>
         )}
       </div>
       

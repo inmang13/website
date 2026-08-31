@@ -70,7 +70,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-transparent text-foreground">
-      
+      <Navigation name="Grace Inman" navItems={navItems} />
       <main>
         <Hero
           name="Grace Inman"
