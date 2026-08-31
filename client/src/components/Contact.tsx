@@ -1,13 +1,14 @@
 import { Button } from "@/components/ui/button";
-import { Mail, Linkedin, Github } from "lucide-react";
+import { Mail, Linkedin, Github, Download } from "lucide-react";
 
 interface ContactProps {
   email: string;
   linkedin?: string;
   github?: string;   // 👈 add this
+  resumeUrl?: string;
 }
 
-export default function Contact({ email, linkedin, github }: ContactProps) {
+export default function Contact({ email, linkedin, github, resumeUrl }: ContactProps) {
   return (
     <section 
       id="contact" 
@@ -58,6 +59,19 @@ export default function Contact({ email, linkedin, github }: ContactProps) {
             >
               <Github className="w-4 h-4" />
               GitHub
+            </Button>
+          )}
+
+          {/* Resume */}
+          {resumeUrl && (
+            <Button
+              variant="outline"
+              size="lg"
+              className="rounded-full px-8 gap-2 border-cyan-400/50 text-cyan-400 hover:bg-cyan-400/10"
+              onClick={() => window.open(resumeUrl, "_blank")}
+            >
+              <Download className="w-4 h-4" />
+              Resume
             </Button>
           )}
 

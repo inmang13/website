@@ -35,10 +35,10 @@ export default function Home() {
       skills: ["Basecamp", "Field Team Leadership"]
     },
     {
-      title: "Water Resources Engineer",
+      title: "Water Resource Engineer I/II",
       company: "CDM Smith",
       location: "Boston, MA",
-      period: "2021-2025",
+      period: "2022-2025",
       description: "Worked on hydrologic and hydraulic modeling, water quality analysis, precipitation analysis, field programs, and drinking water planning.",
       skills:[
       "Python","R","MATLAB","SQL","ArcGIS Online","Field Maps","EPA SWMM","PCSWMM","EPA SSOAP","EFDC","RShiny","renv","SSOAP",
@@ -77,6 +77,7 @@ export default function Home() {
           headshotUrl="./headshot.jpg"
           tagline="Graduate student developing data-driven solutions in water resources engineering."
           initials="GI"
+          resumeUrl="/resume.pdf"
         />
         
         <About
@@ -89,7 +90,8 @@ export default function Home() {
         <Contact
           email="grace.inman@duke.edu"
           linkedin="https://www.linkedin.com/in/grace-inman-990a881a6/" 
-          github="https://github.com/inmang13" />      
+          github="https://github.com/inmang13"
+          resumeUrl="/resume.pdf" />      
         
       </main>
       
