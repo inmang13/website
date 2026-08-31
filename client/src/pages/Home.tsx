@@ -103,17 +103,17 @@ export default function Home() {
       ],
       stack: ["Python", "xarray", "geopandas", "grib2", "PyInstaller"],
       link: "https://github.com/inmang13/MRMS-QPE-24-Hour-Rainfall"
-    },
-    {
-      title: "Galveston Bay Water Quality",
-      location: "Course project, Duke University",
-      description: "In-situ dissolved oxygen sensors in Galveston Bay are sparse. With my teammates, I helped build a pipeline joining observed DO, temperature, and salinity readings to ERA5 climate reanalysis and MODIS satellite imagery, then compared regression models - including linear regression and random forest - to predict DO from remote and reanalysis features alone.",
-      outcomes: [
-        "Random forest outperformed simpler models, though none generalized well on a small held-out dataset - an honest result for a one-semester project, not a production model"
-      ],
-      stack: ["Python", "pandas", "scikit-learn", "ERA5", "MODIS"],
-      link: "https://github.com/inmang13/ESDA_FinalProj_GalvestonBay"
     }
+  ];
+
+  const personalPhotos = [
+    { src: "/fieldwork.jpg", caption: "Did I mention I do fieldwork?" },
+    { src: "/secret-tunnel.jpg", caption: "Secret tunnel.", link: "https://www.youtube.com/watch?v=4-GiYP_4qc0", linkLabel: "Listen" },
+    { src: "/tire-change.jpg", caption: "Fully installed with the short-haired girl starter pack" },
+    { src: "/lake-talk.jpg", caption: "People don't run away when I speak!" },
+    { src: "/tree-hollow.jpg", caption: "I think trees are neat!" },
+    { src: "/sip-n-paint.jpg", caption: "Also qualified to host your office sip-n-paint" },
+    { src: "/rocks.jpg", caption: "You could have this level of excitement on your team! Apply today!" }
   ];
 
   const bio = [
@@ -149,10 +149,7 @@ export default function Home() {
 
         <Experience jobs={jobs} />
 
-        <Personal
-          photoUrl="/rocks.jpg"
-          caption="Me and my shiny rocks"
-        />
+        <Personal photos={personalPhotos} />
 
         <Contact
           email="grace.inman@duke.edu"
