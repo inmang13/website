@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Experience from "@/components/Experience";
+import Personal from "@/components/Personal";
 import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
 
@@ -86,6 +87,11 @@ export default function Home() {
         />
                 
         <Experience jobs={jobs} />
+
+        <Personal
+          photoUrl="/rocks.jpg"
+          caption="Me and my shiny rocks"
+        />
 
         <Contact
           email="grace.inman@duke.edu"
