@@ -12,7 +12,7 @@ export default function Contact({ email, linkedin, github, resumeUrl }: ContactP
   return (
     <section 
       id="contact" 
-      className="py-20 md:py-32 px-6 relative overflow-hidden"
+      className="py-14 md:py-20 px-6 relative overflow-hidden"
       data-testid="section-contact"
     >
       <div className="max-w-3xl mx-auto text-center relative z-10">

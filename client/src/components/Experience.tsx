@@ -23,7 +23,7 @@ export default function Experience({ jobs }: ExperienceProps) {
   return (
     <section 
       id="experience" 
-      className="py-20 md:py-32 px-6 relative overflow-hidden"
+      className="py-14 md:py-20 px-6 relative overflow-hidden"
       data-testid="section-experience"
     >
       <div className="absolute inset-0 bg-transparent" />
@@ -37,7 +37,7 @@ export default function Experience({ jobs }: ExperienceProps) {
 
         </h2>
         
-        <div className="space-y-4">
+        <div className="space-y-3">
           {jobs.map((job, index) => (
             <Collapsible
               key={index}
@@ -48,7 +48,7 @@ export default function Experience({ jobs }: ExperienceProps) {
                 className="bg-gradient-to-br from-card via-card to-cyan-950/20 border-cyan-400/20 hover-elevate"
                 data-testid={`card-job-${index}`}
               >
-                <CardContent className="p-6 md:p-8">
+                <CardContent className="p-5 md:p-6">
                   <CollapsibleTrigger asChild>
                     <button className="w-full text-left flex items-start justify-between gap-4 hover:opacity-80 transition-opacity">
                       <div className="flex-1">

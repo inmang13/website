@@ -7,7 +7,7 @@ export default function Personal({ photoUrl, caption }: PersonalProps) {
   return (
     <section
       id="personal"
-      className="py-20 md:py-32 px-6 relative overflow-hidden"
+      className="py-14 md:py-20 px-6 relative overflow-hidden"
       data-testid="section-personal"
     >
       <div className="relative z-10 max-w-3xl mx-auto text-center">

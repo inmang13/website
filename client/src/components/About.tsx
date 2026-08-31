@@ -17,7 +17,7 @@ export default function About({ bio, credentials }: AboutProps) {
   return (
     <section 
       id="about" 
-      className="py-20 md:py-32 px-6"
+      className="py-14 md:py-20 px-6"
       data-testid="section-about"
     >
       <div className="max-w-3xl mx-auto">
