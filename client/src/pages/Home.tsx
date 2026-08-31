@@ -19,13 +19,13 @@ export default function Home() {
       company: "Duke University",
       location: "Durham, NC",
       period: "2025 - Present",
-      description: "Pursuing a study track in Systems, Risk, and Decision with focus in water.",
-      skills: ["Python",
-      "Pandas / NumPy",
-      "Xarray/Rasterio",
-      "bash/cmd",
-      "Git",
-      "scikit learn"]
+      description: "Pursuing a study track in Systems, Risk, and Decision with focus in water. Current research develops a pipeline to quantify rainfall-derived inflow and infiltration (RDII) in sanitary sewers directly from flow-meter data, using automated baseline separation and storm-event detection across a 15-meter monitoring network in Durham, NC.",
+      skills: ["Data Science",
+      "Data Engineering",
+      "Computer Science",
+      "Software Engineering",
+      "Hydrology",
+      "Planning and Optimization"]
     },
     {
       title: "Field Team Leader / Sewer Sampling Technician",
