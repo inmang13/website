@@ -8,10 +8,10 @@ interface AboutProps {
 
 export default function About({ bio, credentials }: AboutProps) {
   const credentialColors = [
-    "bg-cyan-500/10 text-cyan-700 border-cyan-500/30 hover:bg-cyan-500/20",
-    "bg-blue-500/10 text-blue-700 border-blue-500/30 hover:bg-blue-500/20",
-    "bg-purple-500/10 text-purple-700 border-purple-500/30 hover:bg-purple-500/20",
-    "bg-teal-500/10 text-teal-700 border-teal-500/30 hover:bg-teal-500/20",
+    "bg-cyan-500/10 text-cyan-300 border-cyan-500/30 hover:bg-cyan-500/20",
+    "bg-blue-500/10 text-blue-300 border-blue-500/30 hover:bg-blue-500/20",
+    "bg-purple-500/10 text-purple-300 border-purple-500/30 hover:bg-purple-500/20",
+    "bg-teal-500/10 text-teal-300 border-teal-500/30 hover:bg-teal-500/20",
   ];
 
   return (
