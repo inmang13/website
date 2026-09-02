@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -6,12 +7,27 @@ import Projects from "@/components/Projects";
 import Personal from "@/components/Personal";
 import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
+import RainEffect from "@/components/RainEffect";
+import { projects } from "@/data/projects";
 
 export default function Home() {
+  const [rainActive, setRainActive] = useState(false);
+
+  useEffect(() => {
+    if (window.location.hash) {
+      const id = window.location.hash.slice(1);
+      const el = document.getElementById(id);
+      if (el) {
+        requestAnimationFrame(() => el.scrollIntoView({ behavior: "smooth" }));
+      }
+    }
+  }, []);
+
   const navItems = [
     { label: "About", sectionId: "about" },
-    { label: "Projects", sectionId: "projects" },
     { label: "Experience", sectionId: "experience" },
+    { label: "Projects", sectionId: "projects" },
+    { label: "Personal", sectionId: "personal" },
     { label: "Contact", sectionId: "contact" }
   ];
 
@@ -34,7 +50,7 @@ export default function Home() {
       company: "David Lab, Duke University",
       location: "Durham, NC",
       period: "2025 - Present",
-      description: "Managing field crew for monthly sewer sampling program across 25 census tracts in Durham, NC. Resposible for training new technicians, coordinating logistics, and ensuring data quality.",
+      description: "Managing field crew for monthly sewer sampling program across 25 census tracts in Durham, NC. Responsible for training new technicians, coordinating logistics, and ensuring data quality.",
       skills: ["Basecamp", "Field Team Leadership"]
     },
     {
@@ -60,60 +76,89 @@ export default function Home() {
   
 
 
-  const projects = [
-    {
-      title: "Sewershed Delineation Tool",
-      location: "Edible Atlas Lab, Duke University",
-      description: "The lab needed to know the population upstream of any given manhole before it could make sense of a wastewater sample. I built a Streamlit app that traces the sewer network upstream via graph traversal from a manhole ID, returns the service-area polygon, and joins it against census geography for population, income, and race/ethnicity estimates.",
-      outcomes: [
-        "Validated against expert manual delineation at 24 sites: median IoU 0.875 (0.863 leave-one-out)",
-        "Lab members scope new sampling sites themselves instead of asking me to trace it by hand"
-      ],
-      stack: ["Python", "Streamlit", "Graph traversal", "Spatial joins", "Census data cache"],
-      codeNote: "Not public - carries the city's private sewer network"
-    },
-    {
-      title: "RDII Analysis Pipeline",
-      location: "Graduate research, Duke University",
-      description: "Utilities need to quantify rainfall-derived inflow and infiltration (RDII) to plan sewer rehabilitation, but the usual approach leans on incomplete rainfall records. My research pipeline isolates a dry-weather baseline from flow-meter data alone using an iterative Prophet fit, then segments and matches storm events across meters at the basin level.",
-      outcomes: [
-        "Runs across 15 flow meters and three years of 15-minute readings in Durham, parallelized on the Duke Compute Cluster",
-        "Cleaning, baseline, and event-detection stages are built and tested; engineering-indices and dashboard stages are still ahead"
-      ],
-      stack: ["Python", "pandas", "Prophet", "joblib", "pytest"],
-      codeNote: "Not public - active research pipeline"
-    },
-    {
-      title: "Durham Wastewater eDNA Dashboard",
-      location: "Edible Atlas Lab, Duke University",
-      description: "The lab's monthly wastewater eDNA sampling program produces phyloseq objects, annotation spreadsheets, and shapefiles that nobody without an R environment could read. I built a Python/Dash dashboard behind a staged ETL pipeline: an R step extracts the raw sequencing objects, six Python stages turn that plus shapefiles and spreadsheets into versioned Parquet files, and the dashboard queries them through DuckDB.",
-      outcomes: [
-        "Live and password-protected for the lab, covering 24 active sites with map, site-detail, and diet-comparison views",
-        "Own the pipeline end to end, from a new sequencing batch landing in data/raw/ to it showing up on the dashboard"
-      ],
-      stack: ["Python", "Dash/Plotly", "DuckDB", "Parquet", "R", "Flask/Gunicorn"],
-      codeNote: "Not public - lab-owned, underlying data not yet published"
-    },
-    {
-      title: "MRMS 24-Hour Rainfall Fetcher",
-      location: "Personal project, open source",
-      description: "Water resources work often needs a 24-hour rainfall total at a point or averaged over a catchment for a specific storm, but pulling it from NOAA's radar-based rainfall archive requires knowing the file naming convention, time-zone rounding, and how to parse grib2. I built three tools sharing one core fetcher - a point lookup, a batch tool, and a catchment areal-average tool - and packaged all three as standalone Windows executables so non-programmer collaborators can run them.",
-      outcomes: [
-        "Public and in active use for water resources research at Duke"
-      ],
-      stack: ["Python", "xarray", "geopandas", "grib2", "PyInstaller"],
-      link: "https://github.com/inmang13/MRMS-QPE-24-Hour-Rainfall"
-    }
-  ];
-
+  // Collage: width/ratio/focus/tilt are per-photo so the wall reads scrapbook, not grid.
+  // focus is a CSS object-position — it picks which part of the frame survives the crop.
+  // A portrait ratio (taller than wide) gets the polaroid chin and holds its caption;
+  // a landscape ratio gets an even white border and writes its caption directly on the photo.
+  // tapes is one to three washi pieces (see TapePiece in Personal.tsx) — "diagonal"
+  // crosses a corner, "parallel" lies flat along an edge at `along`% of its length.
+  // Both tape width and sticker size are a % of the photo's own card (not px), so
+  // the whole composition scales with the layout instead of drifting out of
+  // proportion on a narrower screen. sticker art is either a drawn glyph in
+  // Personal.tsx or a cut-out in /public/scrap/stickers, looked up by the same name.
   const personalPhotos = [
-    { src: "/fieldwork.jpg", caption: "Did I mention I do fieldwork?" },
-    { src: "/secret-tunnel.jpg", caption: "Secret tunnel.", link: "https://www.youtube.com/watch?v=4-GiYP_4qc0", linkLabel: "Listen" },
-    { src: "/tire-change.jpg", caption: "Fully installed with the short-haired girl starter pack" },
-    { src: "/lake-talk.jpg", caption: "People don't run away when I speak!" },
-    { src: "/tree-hollow.jpg", caption: "I think trees are neat!" },
-    { src: "/sip-n-paint.jpg", caption: "Also qualified to host your office sip-n-paint" },
-    { src: "/rocks.jpg", caption: "You could have this level of excitement on your team! Apply today!" }
+    {
+      src: "/fieldwork.jpg",
+      caption: "Did I mention I do fieldwork?",
+      width: "28%", ratio: "4/5", focus: "30% 56%", tilt: "-2.2deg", offset: "0px",
+      tapes: [
+        { color: "grid", mode: "parallel" as const, edge: "top" as const, along: 48, rotate: -1, width: 36.7 },
+        { color: "cream-grid", mode: "parallel" as const, edge: "left" as const, along: 53, rotate: 4, width: 27.9 }
+      ],
+      stickers: [
+        { art: "shovel", size: 33.1, style: { left: "84%", top: "-3%" } },
+        { art: "boot-orange", size: 28.7, style: { left: "83%", top: "87%" } }
+      ]
+    },
+    {
+      src: "/lake-talk.jpg",
+      caption: "People don't run away when I speak!",
+      width: "42%", ratio: "3/2", focus: "center 62%", tilt: "1.2deg", offset: "26px",
+      tapes: [
+        { color: "gold", mode: "parallel" as const, edge: "top" as const, along: 52, rotate: 10, width: 26.5 },
+        { color: "gold-dot-cream", mode: "parallel" as const, edge: "bottom" as const, along: 96, rotate: -22, width: 21.6 }
+      ],
+      stickers: [
+        { art: "speech-note", text: "Riveting stuff, I promise!", size: 28.9, style: { left: "36%", top: "19%" } }
+      ]
+    },
+    {
+      src: "/tire-change.jpg",
+      caption: "I do well with (tire) pressure 😂",
+      width: "24%", ratio: "3/4", focus: "72% 42%", tilt: "2.4deg", offset: "8px",
+      tapes: [
+        { color: "dot", mode: "parallel" as const, edge: "top" as const, along: 50, rotate: 0, width: 35.1 },
+        { color: "navy-dot", mode: "parallel" as const, edge: "bottom" as const, along: 50, rotate: -2, width: 27.4 }
+      ],
+      stickers: []
+    },
+    {
+      src: "/sip-n-paint.jpg",
+      caption: "Qualified office party organizer!",
+      width: "38%", ratio: "4/3", focus: "center 46%", tilt: "-1.4deg", offset: "0px",
+      tapes: [
+        { color: "terracotta-stripe", mode: "diagonal" as const, corner: "tl" as const, rotate: -34, width: 23.8 },
+        { color: "terracotta-stripe", mode: "diagonal" as const, corner: "tr" as const, rotate: 36, width: 22.2 },
+        { color: "plum-dot", mode: "diagonal" as const, corner: "br" as const, rotate: -34, width: 28.2 }
+      ],
+      stickers: [
+        { art: "palette", size: 21.4, style: { left: "-6%", top: "57%" } },
+        { art: "paintbrush", size: 22.2, style: { left: "80%", top: "5%" } }
+      ]
+    },
+    {
+      src: "/tree-hollow.jpg",
+      caption: "Not afraid to get my hands dirty!",
+      width: "26%", ratio: "3/4", focus: "34% 72%", tilt: "1.8deg", offset: "34px",
+      tapes: [
+        { color: "bot-eucalyptus", mode: "parallel" as const, edge: "top" as const, along: 50, rotate: -4, width: 55.4 }
+      ],
+      stickers: [
+        { art: "pinecone", size: 23.3, style: { left: "83%", top: "84%" } },
+        { art: "oak-acorns", size: 28.9, style: { left: "-3%", top: "-7%" } }
+      ]
+    },
+    {
+      src: "/rocks.jpg",
+      caption: "Enthusiastic!",
+      width: "29%", ratio: "5/4", focus: "center 28%", tilt: "-2deg", offset: "12px",
+      tapes: [
+        { color: "mustard-stripe", mode: "parallel" as const, edge: "top" as const, along: 50, rotate: -1, width: 32.6 }
+      ],
+      stickers: [
+        { art: "gem", size: 25.5, style: { left: "91%", top: "85%" } }
+      ]
+    }
   ];
 
   const bio = [
@@ -128,15 +173,22 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-transparent text-foreground">
-      <Navigation name="Grace Inman" navItems={navItems} />
+    <div className="min-h-screen mk-page-shell text-foreground">
+      <Navigation
+        name="Grace Inman"
+        navItems={navItems}
+        rainActive={rainActive}
+        onToggleRain={() => setRainActive((v) => !v)}
+      />
+      <RainEffect active={rainActive} />
       <main>
         <Hero
           name="Grace Inman"
           title="Water Resource Engineer"
           headshotUrl="./headshot.jpg"
+          headline="Data pipelines for"
+          headlineAccent="water systems."
           tagline="Graduate student developing data-driven solutions in water resources engineering."
-          initials="GI"
           resumeUrl="/resume.pdf"
         />
         
@@ -145,9 +197,9 @@ export default function Home() {
           credentials={credentials}
         />
                 
-        <Projects projects={projects} />
-
         <Experience jobs={jobs} />
+
+        <Projects projects={projects} />
 
         <Personal photos={personalPhotos} />
 

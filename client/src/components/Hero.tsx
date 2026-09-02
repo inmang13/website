@@ -1,85 +1,131 @@
-import { ChevronDown, Download } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import type { CSSProperties } from "react";
+import { Flower } from "@/components/Flower";
 
 interface HeroProps {
   name: string;
   title: string;
   tagline: string;
+  headline: string;
+  headlineAccent: string;
   headshotUrl?: string;
-  initials?: string;
   resumeUrl?: string;
 }
 
-export default function Hero({ name, title, tagline, headshotUrl, initials = "GI", resumeUrl }: HeroProps) {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+const flowers: { size: number; style: CSSProperties }[] = [
+  { size: 16, style: { top: "-10px", left: "-12px", transform: "rotate(-8deg)" } },
+  { size: 12, style: { top: "20%", right: "-14px", transform: "rotate(15deg)" } },
+  { size: 14, style: { bottom: "-8px", left: "30%", transform: "rotate(30deg)" } },
+  { size: 18, style: { bottom: "10%", right: "-10px", transform: "rotate(-20deg)" } },
+  { size: 11, style: { top: "55%", left: "-16px", transform: "rotate(5deg)" } },
+];
 
+const features = [
+  {
+    heading: "Hydrology",
+    text: "Hydrologic and hydraulic modeling, rainfall analysis, and sewer flow-metering across field and municipal-scale datasets.",
+    path: (
+      <>
+        <path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z" />
+        <path d="M9.3 15.8c-.35-1.3.25-2.75 1.7-3.75" strokeWidth="1.3" />
+      </>
+    ),
+  },
+  {
+    heading: "Data Engineering",
+    text: "ETL pipelines and dashboards using Python, DuckDB, and Parquet turning raw sensor and lab data into something queryable.",
+    path: (
+      <>
+        <path d="M4 20h16" />
+        <rect x="6" y="13" width="3.2" height="7" rx="0.6" />
+        <rect x="11.4" y="9" width="3.2" height="11" rx="0.6" />
+        <rect x="16.8" y="5" width="3.2" height="15" rx="0.6" />
+      </>
+    ),
+  },
+  {
+    heading: "Software Engineering",
+    text: "Streamlit and Dash applications, graph traversal, and standalone tools built for non-programmer collaborators.",
+    path: (
+      <>
+        <polyline points="16 6 22 12 16 18" />
+        <polyline points="8 6 2 12 8 18" />
+      </>
+    ),
+  },
+];
+
+export default function Hero({
+  name,
+  title,
+  tagline,
+  headline,
+  headlineAccent,
+  headshotUrl,
+  resumeUrl,
+}: HeroProps) {
   return (
-    <section 
-      id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20 overflow-hidden"
-      data-testid="section-hero"
-    >
-      <div className="absolute inset-0 bg-transparent" />
-      
+    <>
+      <header className="mk-hero" id="hero" data-testid="section-hero">
+        <div className="mk-wrap">
+          <div className="mk-photo-wrap">
+            <div className="mk-headshot-frame">
+              <img src={headshotUrl} alt={`${name}, ${title}`} />
+            </div>
+            {flowers.map((flower, index) => (
+              <Flower key={index} size={flower.size} style={flower.style} />
+            ))}
+          </div>
 
-      
-      <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <Avatar className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-8 ring-4 ring-primary/20 ring-offset-4 ring-offset-background">
-          <AvatarImage src={headshotUrl} alt={name} className="w-full h-full object-cover" />
-          <AvatarFallback className="text-3xl md:text-4xl font-semibold bg-primary/20 text-primary">
-            {initials}
-          </AvatarFallback>
-        </Avatar>
-        
-        <p 
-          className="text-sm md:text-base uppercase tracking-[0.2em] text-primary mb-6"
-          data-testid="text-title"
-        >
-          {title}
-        </p>
-        
-        <h1 
-          className="text-5xl md:text-7xl font-bold tracking-tight text-foreground mb-8"
-          data-testid="text-name"
-        >
-          {name}
-        </h1>
-        
-        <p 
-          className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto"
-          data-testid="text-tagline"
-        >
-          {tagline}
-        </p>
+          <div className="mk-hero-copy">
+            <h1 data-testid="text-name">
+              {headline} <span>{headlineAccent}</span>
+            </h1>
+            <p className="mk-lede" data-testid="text-tagline">
+              {tagline}
+            </p>
+            {resumeUrl && (
+              <div className="mk-hero-actions">
+                <a className="mk-btn-resume" href={resumeUrl} download data-testid="link-download-resume">
+                  Download Resume
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M12 3v12" />
+                    <path d="m7 10 5 5 5-5" />
+                    <path d="M5 21h14" />
+                  </svg>
+                </a>
+              </div>
+            )}
+          </div>
+        </div>
+      </header>
 
-        {resumeUrl && (
-          <Button
-            asChild
-            size="lg"
-            className="mt-8 rounded-full gap-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:shadow-lg hover:shadow-cyan-500/50"
-          >
-            <a href={resumeUrl} download data-testid="link-download-resume">
-              <Download className="w-4 h-4" />
-              Download Resume
-            </a>
-          </Button>
-        )}
-      </div>
-      
-      <button
-        onClick={() => scrollToSection("about")}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-primary hover:text-primary/80 transition-colors"
-        aria-label="Scroll to about section"
-        data-testid="button-scroll-down"
-      >
-        <ChevronDown className="w-8 h-8 animate-bounce" />
-      </button>
-    </section>
+      <section className="mk-features" data-testid="section-features">
+        <div className="mk-wrap mk-grid3">
+          {features.map((feature) => (
+            <div
+              className="mk-fcard"
+              key={feature.heading}
+              data-testid={`card-feature-${feature.heading.toLowerCase().replace(/[^a-z]+/g, "-")}`}
+            >
+              <div className="mk-ficon">
+                <svg viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  {feature.path}
+                </svg>
+              </div>
+              <h3>{feature.heading}</h3>
+              <p>{feature.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }
+

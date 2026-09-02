@@ -81,6 +81,11 @@ export default {
           busy: "rgb(239 68 68)",
           offline: "rgb(156 163 175)",
         },
+        brandTeal: {
+          DEFAULT: "#54A8AA",
+          deep: "#3f8688",
+        },
+        brandAmber: "#E2955A",
       },
       fontFamily: {
         sans: ["var(--font-sans)"],

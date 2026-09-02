@@ -1,5 +1,4 @@
-import { Button } from "@/components/ui/button";
-import { Mail, Linkedin, Github, Download } from "lucide-react";
+import { Mail, Linkedin, Github, Download, Sparkles } from "lucide-react";
 
 interface ContactProps {
   email: string;
@@ -9,70 +8,79 @@ interface ContactProps {
 }
 
 export default function Contact({ email, linkedin, github, resumeUrl }: ContactProps) {
+  const hireSubject = "Job offer";
+  const hireBody = [
+    "Hi Grace,",
+    "",
+    "I came across your super cool personal website and want you on my team immediately! I am willing to pay you a large, yet reasonable salary.",
+    "",
+    "Role:",
+    "Team:",
+    "Location:",
+    "",
+    "Best,",
+    ""
+  ].join("\n");
+  const hireHref =
+    `mailto:${email}?subject=${encodeURIComponent(hireSubject)}&body=${encodeURIComponent(hireBody)}`;
+
   return (
-    <section 
-      id="contact" 
-      className="py-14 md:py-20 px-6 relative overflow-hidden"
-      data-testid="section-contact"
-    >
-      <div className="max-w-3xl mx-auto text-center relative z-10">
-        <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
-          Let's Connect
-        </h2>
+    <section id="contact" className="mk-block" data-testid="section-contact">
+      <div className="mk-wrap">
+        <div className="mk-sec-stack">
+          <h2>Let's Connect</h2>
+          <p className="mk-sec-sub">Open to full-time employment after graduating May 2027</p>
+        </div>
 
-        <p className="text-muted-foreground mb-12 max-w-xl mx-auto">
-          Open to full-time employment after graduating May 2027
-        </p>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+        <div className="flex flex-wrap items-center gap-3">
           
-          {/* Email */}
-          <Button
-            size="lg"
-            className="rounded-full px-8 gap-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:shadow-lg hover:shadow-cyan-500/50"
-            onClick={() => window.location.href = `mailto:${email}`}
-          >
-            <Mail className="w-4 h-4" />
+          <a className="mk-btn-resume mk-btn-hire" href={hireHref} data-testid="link-hire-me">
+            <Sparkles />
+            Hire Me!
+          </a>
+
+          <a className="mk-btn-ghost" href={`mailto:${email}`} data-testid="link-email">
+            <Mail />
             Email Me
-          </Button>
+          </a>
 
-          {/* LinkedIn */}
           {linkedin && (
-            <Button
-              variant="outline"
-              size="lg"
-              className="rounded-full px-8 gap-2 border-cyan-400/50 text-cyan-400 hover:bg-cyan-400/10"
-              onClick={() => window.open(linkedin, "_blank")}
+            <a
+              className="mk-btn-ghost"
+              href={linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="link-linkedin"
             >
-              <Linkedin className="w-4 h-4" />
+              <Linkedin />
               LinkedIn
-            </Button>
+            </a>
           )}
 
-          {/* GitHub */}
           {github && (
-            <Button
-              variant="outline"
-              size="lg"
-              className="rounded-full px-8 gap-2 border-slate-400/50 text-slate-300 hover:bg-slate-700/30"
-              onClick={() => window.open(github, "_blank")}
+            <a
+              className="mk-btn-ghost"
+              href={github}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="link-github"
             >
-              <Github className="w-4 h-4" />
+              <Github />
               GitHub
-            </Button>
+            </a>
           )}
 
-          {/* Resume */}
           {resumeUrl && (
-            <Button
-              variant="outline"
-              size="lg"
-              className="rounded-full px-8 gap-2 border-cyan-400/50 text-cyan-400 hover:bg-cyan-400/10"
-              onClick={() => window.open(resumeUrl, "_blank")}
+            <a
+              className="mk-btn-ghost"
+              href={resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="link-resume"
             >
-              <Download className="w-4 h-4" />
+              <Download />
               Resume
-            </Button>
+            </a>
           )}
 
         </div>
