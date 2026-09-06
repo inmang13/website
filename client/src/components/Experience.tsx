@@ -4,7 +4,6 @@ interface Job {
   location: string;
   period: string;
   description: string;
-  skills: string[];
 }
 
 interface ExperienceProps {

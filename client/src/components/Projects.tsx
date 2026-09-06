@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import type { Project } from "@/data/projects";
-import { Flower, FlowerGarland } from "@/components/Flower";
+import { FlowerGarland } from "@/components/Flower";
 
 interface ProjectsProps {
   projects: Project[];
@@ -50,11 +50,6 @@ export default function Projects({ projects }: ProjectsProps) {
               </div>
 
               <p data-testid={`text-project-hook-${project.slug}`}>{project.hook}</p>
-
-              <div className="mk-proj-stat" data-testid={`text-project-outcome-${project.slug}`}>
-                <Flower size={13} />
-                <span>{project.topOutcome}</span>
-              </div>
 
               <div className="mk-proj-more">
                 <Link

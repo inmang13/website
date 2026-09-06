@@ -34,42 +34,31 @@ export default function Home() {
   const jobs = [
     {
       title: "Graduate Student Researcher",
-      company: "Duke University",
+      company: "ZEDD Lab, Duke University",
       location: "Durham, NC",
       period: "2025 - Present",
-      description: "Pursuing a study track in Systems, Risk, and Decision with focus in water. Current research develops a pipeline to quantify rainfall-derived inflow and infiltration (RDII) in sanitary sewers directly from flow-meter data, using automated baseline separation and storm-event detection across a 15-meter monitoring network in Durham, NC.",
-      skills: ["Data Science",
-      "Data Engineering",
-      "Computer Science",
-      "Software Engineering",
-      "Hydrology",
-      "Planning and Optimization"]
+      description: "Pursuing a study track in Systems, Risk, and Decision with a focus area in hydrology. My graduate research is developing a pipeline to quantify rainfall-derived inflow and infiltration (RDII) in sanitary sewers directly from flow-meter data, using automated baseline separation and storm-event detection."
     },
     {
-      title: "Field Team Leader / Sewer Sampling Technician",
-      company: "David Lab, Duke University",
+      title: "GIS Developer and Field Team Coordinator",
+      company: "Edible Atlas, Duke University",
       location: "Durham, NC",
       period: "2025 - Present",
-      description: "Managing field crew for monthly sewer sampling program across 25 census tracts in Durham, NC. Responsible for training new technicians, coordinating logistics, and ensuring data quality.",
-      skills: ["Basecamp", "Field Team Leadership"]
+      description: "Maintaining GIS data and a lab-side analytics dashboard, and managing field crew for a monthly sewer sampling program across 25+ sites. Responsible for training new technicians and coordinating logistics."
     },
     {
       title: "Water Resource Engineer I/II",
       company: "CDM Smith",
       location: "Boston, MA",
       period: "2022-2025",
-      description: "Worked on hydrologic and hydraulic modeling, water quality analysis, precipitation analysis, field programs, and drinking water planning.",
-      skills:[
-      "Python","R","MATLAB","SQL","ArcGIS Online","Field Maps","EPA SWMM","PCSWMM","EPA SSOAP","EFDC","RShiny","renv","SSOAP",
-    ]
+      description: "Supported hydrologic and hydraulic modeling, water quality analysis, precipitation analysis, and field sampling programs across New England. Performed infiltration and inflow analyses, contributed to FEMA floodplain studies and regional water planning, and coordinated interns and specialists on a regulatory documentation project."
     },
     {
       title: "Tufts Data Laboratory Assistant",
       company: "Tufts University",
       location: "Medford, MA",
       period: "2021 - 2022",
-      description: "Provided GIS, coding, and data visualization assistance for students and faculty.",
-      skills: ["ArcMap","ArcGIS Pro","Python","R","Geopandas"]
+      description: "Provided GIS, coding, and data visualization assistance for students and faculty."
     }
   ];
 
@@ -162,7 +151,7 @@ export default function Home() {
   ];
 
   const bio = [
-    "I'm an M.S. student in Civil and Environmental Engineering at Duke University, specializing in Systems, Risk, and Decision. My work is grounded in water resources engineering, and I'm currently expanding my expertise in computational methods and programming to better understand and solve complex water challenges."
+    "I'm an M.S. student in Civil and Environmental Engineering at Duke University. My work is grounded in water resources engineering, and I'm currently expanding my expertise in computational methods and programming to better understand and solve complex water challenges."
   ];
 
   const credentials = [

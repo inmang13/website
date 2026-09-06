@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useParams, Link } from "wouter";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -15,10 +16,16 @@ const navItems = [
 export default function ProjectDetail() {
   const { slug } = useParams<{ slug: string }>();
   const project = projects.find((p) => p.slug === slug);
+  const [lightbox, setLightbox] = useState<{ src: string; caption?: string } | null>(null);
 
   if (!project) {
     return <NotFound />;
   }
+
+  const galleryItems = [
+    ...(project.screenshot ? [{ src: project.screenshot, caption: project.title }] : []),
+    ...(project.figures ?? []),
+  ];
 
   return (
     <div className="min-h-screen mk-page-shell text-foreground">
@@ -54,9 +61,22 @@ export default function ProjectDetail() {
               </div>
             </div>
 
-            {project.screenshot && (
-              <div className="mk-detail-hero">
-                <img src={project.screenshot} alt={`${project.title} screenshot`} />
+            {galleryItems.length > 0 && (
+              <div className="mk-figures-grid mk-detail-gallery" data-testid="section-figures">
+                {galleryItems.map((item, index) => (
+                  <figure className="mk-figure" key={item.src}>
+                    <button
+                      type="button"
+                      className="mk-figure-btn"
+                      onClick={() => setLightbox(item)}
+                      aria-label={`Enlarge image: ${item.caption ?? project.title}`}
+                      data-testid={`button-enlarge-figure-${index}`}
+                    >
+                      <img src={item.src} alt={item.caption ?? `${project.title} screenshot`} />
+                    </button>
+                    {item.caption && <figcaption>{item.caption}</figcaption>}
+                  </figure>
+                ))}
               </div>
             )}
 
@@ -86,23 +106,34 @@ export default function ProjectDetail() {
               <p>{project.outcome}</p>
             </div>
 
-            {project.figures && project.figures.length > 0 && (
-              <div className="mk-detail-section mk-figures" data-testid="section-figures">
-                <h2 className="mk-detail-h2">Figures</h2>
-                <div className="mk-figures-grid">
-                  {project.figures.map((figure) => (
-                    <figure className="mk-figure" key={figure.src}>
-                      <img src={figure.src} alt={figure.caption} />
-                      <figcaption>{figure.caption}</figcaption>
-                    </figure>
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
         </section>
       </main>
       <Footer name="Grace Inman" />
+
+      {lightbox && (
+        <div
+          className="mk-lightbox"
+          role="dialog"
+          aria-modal="true"
+          onClick={() => setLightbox(null)}
+          data-testid="lightbox-overlay"
+        >
+          <button
+            type="button"
+            className="mk-lightbox-close"
+            onClick={() => setLightbox(null)}
+            aria-label="Close enlarged image"
+            data-testid="button-close-lightbox"
+          >
+            &times;
+          </button>
+          <figure className="mk-lightbox-figure" onClick={(event) => event.stopPropagation()}>
+            <img src={lightbox.src} alt={lightbox.caption ?? "Enlarged screenshot"} />
+            {lightbox.caption && <figcaption>{lightbox.caption}</figcaption>}
+          </figure>
+        </div>
+      )}
     </div>
   );
 }

@@ -21,8 +21,8 @@ const flowers: { size: number; style: CSSProperties }[] = [
 
 const features = [
   {
-    heading: "Hydrology",
-    text: "Hydrologic and hydraulic modeling, rainfall analysis, and sewer flow-metering across field and municipal-scale datasets.",
+    heading: "Water Resources",
+    text: "Hydrology, planning and optimization, and modeling.",
     path: (
       <>
         <path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z" />
@@ -31,8 +31,8 @@ const features = [
     ),
   },
   {
-    heading: "Data Engineering",
-    text: "ETL pipelines and dashboards using Python, DuckDB, and Parquet turning raw sensor and lab data into something queryable.",
+    heading: "Data and Analytics",
+    text: "Data visualizations, UI, and ETL.",
     path: (
       <>
         <path d="M4 20h16" />
@@ -43,8 +43,8 @@ const features = [
     ),
   },
   {
-    heading: "Software Engineering",
-    text: "Streamlit and Dash applications, graph traversal, and standalone tools built for non-programmer collaborators.",
+    heading: "Programming",
+    text: "Python, R, GIS, and a touch of everything else.",
     path: (
       <>
         <polyline points="16 6 22 12 16 18" />
