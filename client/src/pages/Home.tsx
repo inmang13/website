@@ -37,7 +37,7 @@ export default function Home() {
       company: "ZEDD Lab, Duke University",
       location: "Durham, NC",
       period: "2025 - Present",
-      description: "Pursuing a study track in Systems, Risk, and Decision with a focus area in hydrology. My graduate research is developing a pipeline to quantify rainfall-derived inflow and infiltration (RDII) in sanitary sewers directly from flow-meter data, using automated baseline separation and storm-event detection."
+      description: "Pursuing a study track in Systems, Risk, and Decision with a focus area in hydrology. My graduate research examines the RTK unit hydrograph method's history and applies it alongside alternative approaches to separate fast and slow inflow/infiltration (I/I) components in sanitary sewers."
     },
     {
       title: "GIS Developer and Field Team Coordinator",
